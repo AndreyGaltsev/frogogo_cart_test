@@ -1,1 +1,3 @@
-<%= button_to @title, @path, method: @method, form_class: @form_class, render: @render, data: @options %>
+<%= button_to @path, method: @method, p_class: @p_class, render: @render, data: @options do %>
+  <p class="<%= @p_class %>"><%= @title %></p>
+<% end %>
