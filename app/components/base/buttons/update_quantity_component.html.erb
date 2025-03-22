@@ -1,0 +1,47 @@
+<%= form_with url: @path,
+              method: :patch,
+              data: {
+                controller: "cart",
+                action: "input->cart#submit",
+                turbo_frame: "cart"
+              } do |f| %>
+
+  <%= f.hidden_field :id, value: @product_id %>
+
+  <div class="flex justify-center items-center gap-x-2 p-1 bg-gray-50 rounded-lg">
+    <%= button_tag type: "button",
+                   class: "decrement-button",
+                   data: { action: "click->cart#decrement" } do %>
+      <svg xmlns="http://www.w3.org/2000/svg"
+           class="w-6 h-6 cursor-pointer"
+           viewBox="0 0 24 24"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <line x1="7" y1="12" x2="17" y2="12" />
+      </svg>
+    <% end %>
+
+    <%= f.text_field :quantity,
+                       value: @picked_product_quantity,
+                       min: 1,
+                       class: "h-7 w-10 text-lg font-medium text-center border-0 cursor-pointer",
+                       data: { cart_target: "quantity" } %>
+
+    <%= button_tag type: "button",
+                   class: "increment-button",
+                   data: { action: "click->cart#increment" } do %>
+      <svg xmlns="http://www.w3.org/2000/svg"
+           class="w-6 h-6 cursor-pointer"
+           viewBox="0 0 24 24"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+        <line x1="7" y1="12" x2="17" y2="12" />
+        <line x1="12" y1="7" x2="12" y2="17" />
+      </svg>
+    <% end %>
+  </div>
+<% end %>

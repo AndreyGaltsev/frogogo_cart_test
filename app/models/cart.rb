@@ -6,4 +6,8 @@ class Cart < ApplicationRecord
   def cleanable?
     picked_products.present?
   end
+
+  def total_price
+    picked_products.to_a.sum(&:total_price)
+  end
 end

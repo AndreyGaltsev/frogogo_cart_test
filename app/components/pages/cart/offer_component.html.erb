@@ -1,0 +1,37 @@
+  <div class="flex lg:flex-col sm:flex-row flex-col lg:gap-x-10 gap-x-5">
+    <div class="flex flex-col text-indigo-950">
+      <p class="text-lg font-medium mb-2">В корзине <%= product_count_text(@cart.picked_products_count) %> </p>
+      <% if @cart.has_available_products? && @cart.has_unavailable_products? %>
+        <p>В наличии - <%= @cart.picked_products_available_sum %> шт.</p>
+      <% end %>
+      <% if @cart.has_only_available_products? %>
+        <p>Все товары в наличии</p>
+      <% end %>
+      <% if @cart.has_available_products?%>
+        <p class="text-lg font-medium max-w-min text-nowrap border-t border-blue-950 mt-2 mb-3">Итого: <%= @cart.total_price %> <span> &#8381;</span> </p>
+      <% end %>
+      <% if @cart.has_available_products? && @cart.has_unavailable_products? %>
+        <p>В предзаказе - <%= @cart.picked_products_unavailable_sum %> шт.</p>
+      <% end %>
+      <% if @cart.has_only_unavailable_products? %>
+        <p>Все товары доступны только для предзаказа</p>
+      <% end %>
+    </div>
+    <% if @cart.has_unavailable_products? %>
+      <div class="w-64">
+        <p class="text-justify text-center text-sm text-red-600 mb-2">Товары для предзаказа находятся у наших поставщиков.<br>При оформлении предзаказа наши сотрудники в ближайшее время уточнят цену и наличие товара.</p>
+        <% if @cart.has_available_products? %>
+          <%= button_to keep_only_available_cart_path, method: :patch, data: { turbo_frame: "cart" } do %>
+            <p class="text-indigo-950 xl:hover:text-black underline max-xl:active:text-black active:font-medium">Оставить только в наличии</p>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="flex flex-row justify-center">
+    <% if current_user %>
+      <%= link_to 'ПЕРЕЙТИ К ОФОРМЛЕНИЮ', new_order_path, class: "h-[42px] sm:w-[260px] w-[234px] active:border-2 active:font-semibold xl:hover:bg-red-550 max-xl:active:bg-red-550 border border-red-900 text-nowrap px-2 mt-3 flex grow items-center justify-center py-2 bg-red-600 text-gray-100 font-medium rounded-lg sm:text-lg xl:hover:text-white max-xl:active:text-white shadow-md xl:hover:shadow-xl max-xl:active:shadow-xl xl:hover:shadow-indigo-950/30 max-xl:active:shadow-indigo-950/30" %>
+    <% else %>
+      <%= link_to 'ПЕРЕЙТИ К ОФОРМЛЕНИЮ', login_path, data: { "turbo-frame": "modal" }, class: "h-[42px] sm:w-[260px] w-[234px] active:border-2 active:font-semibold xl:hover:bg-red-550 max-xl:active:bg-red-550 border border-red-900 text-nowrap px-2 mt-3 flex grow items-center justify-center py-2 bg-red-600 text-gray-100 font-medium rounded-lg sm:text-lg xl:hover:text-white max-xl:active:text-white shadow-md xl:hover:shadow-xl max-xl:active:shadow-xl xl:hover:shadow-indigo-950/30 max-xl:active:shadow-indigo-950/30" %>
+    <% end %>
+  </div>

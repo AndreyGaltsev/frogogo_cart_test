@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Base::Buttons::ButtonToComponent < ApplicationComponent
+class Base::Buttons::TextButtonComponent < ApplicationComponent
   def initialize(title:, path: nil, method: nil, p_class: nil, render: true, **options)
     @title = title
     @path = path
