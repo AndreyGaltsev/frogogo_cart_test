@@ -7,7 +7,15 @@ class Cart < ApplicationRecord
     picked_products.present?
   end
 
+  def clear_cart
+    picked_products.destroy_all
+  end
+
   def total_price
     picked_products.to_a.sum(&:total_price)
+  end
+
+  def picked_products_count
+    picked_products.to_a.sum(&:quantity)
   end
 end

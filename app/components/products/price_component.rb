@@ -3,7 +3,7 @@
 class Products::PriceComponent < ApplicationComponent
   erb_template <<-ERB
     <div class="text-xl font-medium">
-      <%= @price %> <span>&#8381;</span>
+      <%= format_price(@price) %> <span>&#8381;</span>
     </div>
   ERB
 

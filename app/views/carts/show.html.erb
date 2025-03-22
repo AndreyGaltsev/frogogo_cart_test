@@ -6,10 +6,17 @@
     <% component.with_text_button(title: 'Очистить корзину',
                                   path: clear_cart_path,
                                   method: :delete,
-                                  p_class: 'text-gray-400 font-medium hover:text-black hover:underline cursor-pointer',
                                   render: @current_cart.cleanable?) %>
   <% end %>
-  <div class="flex flex-col gap-y-5">
-    <%= render Pages::Cart::ProductComponent.with_collection(@picked_products) %>
-  </div>
+  <% if @picked_products.any? %>
+    <div class="flex flex-col gap-y-10">
+      <%= render Pages::Cart::ProductComponent.with_collection(@picked_products) %>
+      <%= render Pages::Cart::OfferComponent.new(cart: @current_cart) %>
+      <%= render Reusable::Buttons::SubmitComponent.new(title: 'Оформить',
+                                                        path: clear_cart_path,
+                                                        method: :delete) %>
+    </div>
+  <% else %>
+    <%= render Pages::Cart::EmptyComponent.new %>
+<% end %>
 </div>

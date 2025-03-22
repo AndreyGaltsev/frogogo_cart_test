@@ -5,6 +5,8 @@ class CartsController < ApplicationController
   end
 
   def clear
+    @current_cart.clear_cart
+    redirect_to cart_path
   end
 
   def update_quantity
