@@ -1,24 +1,26 @@
-<div class="flex flex-col px-[26%] gap-y-8">
-  <%= render Pages::Cart::TitleComponent.new do |component| %>
-    <% component.with_title do %>
-      <%= 'Корзина' %>
+<%= turbo_frame_tag "cart" do %>
+  <div class="flex flex-col px-[26%] gap-y-8">
+    <%= render Pages::Cart::TitleComponent.new do |component| %>
+      <% component.with_title do %>
+        <%= 'Корзина' %>
+      <% end %>
+      <% component.with_text_button(title: 'Очистить корзину',
+                                    path: clear_cart_path,
+                                    method: :delete,
+                                    render: @current_cart.cleanable?) %>
     <% end %>
-    <% component.with_text_button(title: 'Очистить корзину',
-                                  path: clear_cart_path,
-                                  method: :delete,
-                                  render: @current_cart.cleanable?) %>
-  <% end %>
-  <% if @picked_products.any? %>
-    <div class="flex flex-col gap-y-10">
-      <div class="flex flex-col gap-y-4">
-        <%= render Pages::Cart::ProductComponent.with_collection(@picked_products) %>
+    <% if @picked_products.any? %>
+      <div class="flex flex-col gap-y-10">
+        <div class="flex flex-col gap-y-4">
+          <%= render Pages::Cart::ProductComponent.with_collection(@picked_products) %>
+        </div>
+        <%= render Pages::Cart::OfferComponent.new(cart: @current_cart) %>
+        <%= render Reusable::Buttons::SubmitComponent.new(title: 'Оформить',
+                                                          path: clear_cart_path,
+                                                          method: :delete) %>
       </div>
-      <%= render Pages::Cart::OfferComponent.new(cart: @current_cart) %>
-      <%= render Reusable::Buttons::SubmitComponent.new(title: 'Оформить',
-                                                        path: clear_cart_path,
-                                                        method: :delete) %>
-    </div>
-  <% else %>
-    <%= render Pages::Cart::EmptyComponent.new %>
+    <% else %>
+      <%= render Pages::Cart::EmptyComponent.new %>
+    <% end %>
+  </div>
 <% end %>
-</div>

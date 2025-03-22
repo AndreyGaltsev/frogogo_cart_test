@@ -2,8 +2,7 @@
               method: :patch,
               data: {
                 controller: "cart",
-                action: "input->cart#submit",
-                turbo_frame: "cart"
+                action: "input->cart#submit"
               } do |f| %>
 
   <%= f.hidden_field :id, value: @product_id %>

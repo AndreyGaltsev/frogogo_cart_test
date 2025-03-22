@@ -9,5 +9,6 @@ class Pages::Cart::ProductComponent < ApplicationComponent
     @picked_product = picked_product
     @picked_product_id = picked_product.id
     @picked_product_quantity = picked_product.quantity
+    @turbo_frame = "cart-card-#{@product_id}"
   end
 end
