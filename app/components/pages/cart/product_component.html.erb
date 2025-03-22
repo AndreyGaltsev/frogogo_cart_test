@@ -1,6 +1,6 @@
 <div id="cart-card-<%= @product_id %>">
   <%= render Pages::Cart::CardComponent.new(picked_product: @picked_product) do |component| %>
-    <% component.with_image(product: @product, image_options: {style: "width: 180px; height: auto;"} ) %>
+    <% component.with_image(product: @product, image_options: {style: "width: 120px; height: auto;"} ) %>
     <% component.with_name(product: @product) %>
     <% component.with_update_quantity(path: update_quantity_cart_path, product_id: @product_id, picked_product_quantity: @picked_product_quantity) %>
     <% component.with_price(product: @product) %>

@@ -1,4 +1,4 @@
-<div class="flex flex-col px-[20%] gap-y-10">
+<div class="flex flex-col px-[26%] gap-y-8">
   <%= render Pages::Cart::TitleComponent.new do |component| %>
     <% component.with_title do %>
       <%= 'Корзина' %>
@@ -10,7 +10,9 @@
   <% end %>
   <% if @picked_products.any? %>
     <div class="flex flex-col gap-y-10">
-      <%= render Pages::Cart::ProductComponent.with_collection(@picked_products) %>
+      <div class="flex flex-col gap-y-4">
+        <%= render Pages::Cart::ProductComponent.with_collection(@picked_products) %>
+      </div>
       <%= render Pages::Cart::OfferComponent.new(cart: @current_cart) %>
       <%= render Reusable::Buttons::SubmitComponent.new(title: 'Оформить',
                                                         path: clear_cart_path,
