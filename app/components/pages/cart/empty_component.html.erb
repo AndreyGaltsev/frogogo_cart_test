@@ -1,5 +1,8 @@
 <div class="flex flex-col items-center justify-center h-[50vh]">
-  <%= image_tag asset_path('empty_cart.png'), class: "mb-8", style: "width: auto; height: 55px;" %>
-  <p class="text-2xl font-medium mb-2">В корзине нет товаров</p>
-  <p class="text-gray-500">Добавьте товар из каталога.</p>
+  <%= image_tag asset_path('empty_cart.png'), alt: "Пустая корзина", class: "mb-8 h-14 w-auto" %>
+  <h2 class="text-2xl font-medium mb-2">В корзине нет товаров</h2>
+  <h3 class="text-gray-500">Добавьте товар из каталога.</h3>
 </div>
+<%= render Reusable::Buttons::TextButtonComponent.new(title: 'Восстановить бд',
+                                                      path: reset_db_path,
+                                                      method: :post) %>

@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import CartController from "./cart_controller"
 application.register("cart", CartController)
+
+import RangeSliderController from "./range_slider_controller"
+application.register("range-slider", RangeSliderController)

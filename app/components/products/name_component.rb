@@ -2,9 +2,9 @@
 
 class Products::NameComponent < ApplicationComponent
   erb_template <<-ERB
-    <p class="font-medium">
+    <h3 class="font-medium">
       <%= @name %>
-    </p>
+    </h3>
   ERB
 
   def initialize(product:)

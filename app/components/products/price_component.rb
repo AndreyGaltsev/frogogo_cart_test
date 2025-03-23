@@ -2,9 +2,9 @@
 
 class Products::PriceComponent < ApplicationComponent
   erb_template <<-ERB
-    <div class="text-xl font-medium">
-      <%= format_price(@price) %> <span>&#8381;</span>
-    </div>
+    <p class="text-xl font-medium">
+      <%= format_price(@price) %> <span class="currency">₽</span>
+    </p>
   ERB
 
   def initialize(product:)

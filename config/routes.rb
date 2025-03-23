@@ -15,5 +15,7 @@ Rails.application.routes.draw do
     patch  :update_quantity
     delete :remove_product
     delete :clear
-    end
+  end
+  post 'reset_db', to: 'application#reset_db', as: :reset_db
+
 end
