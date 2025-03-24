@@ -2,11 +2,10 @@ module ApplicationHelper
   def product_count_text(count)
     product_word_forms = %w[товар товара товаров]
     "#{count} #{declension(count, product_word_forms)} на сумму"
-
   end
 
   def format_price(price)
-    whole, decimal = price.to_s.split('.')
+    whole, decimal = price.to_s.split(".")
     formatted_whole = whole.reverse.gsub(/(\d{3})(?=\d)/, '\1 ').reverse
 
     if decimal

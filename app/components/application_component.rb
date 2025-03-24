@@ -3,5 +3,4 @@
 class ApplicationComponent < ViewComponent::Base
   include Turbo::FramesHelper
   include ApplicationHelper
-
 end

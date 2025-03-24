@@ -4,7 +4,7 @@
       <h3 class="text-lg text-gray-500"><%= product_count_text(@cart.picked_products_count) %></h3>
       <h3 class="text-xl font-medium"><%= format_price(@cart.total_price) %> <span class="currency">₽</span></h3>
     </div>
-    <%= render Reusable::Sliders::RangeComponent.new(cart: @cart) %>
+    <%= render Pages::Cart::DiscountRangeSliderComponent.new(cart: @cart) %>
     <div class="flex flex-row justify-between items-center pt-5 border-t-2 border-gray-100">
       <h3 class="text-xl font-medium">Сумма заказа</h3>
       <h3 id="order-total-amount" class="text-2xl font-semibold"><%= format_price(@cart.total_price) %> <span class="currency">₽</span></h3>

@@ -15,7 +15,7 @@
           <%= render Pages::Cart::ProductComponent.with_collection(@picked_products) %>
         </div>
         <%= render Pages::Cart::OfferComponent.new(cart: @current_cart) %>
-        <%= render Reusable::Buttons::SubmitComponent.new(title: 'Оформить',
+        <%= render Shared::Buttons::SubmitComponent.new(title: 'Оформить',
                                                           path: clear_cart_path,
                                                           method: :delete) %>
       </div>

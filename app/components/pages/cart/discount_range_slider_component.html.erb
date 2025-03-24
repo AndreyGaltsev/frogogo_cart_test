@@ -1,10 +1,10 @@
-<div data-controller="range-slider"
-     data-range-slider-max-discount="<%= @max_discount %>"
-     data-range-slider-total-price="<%= @total_price %>"
+<div data-controller="discount-range-slider"
+     data-discount-range-slider-max-discount="<%= @max_discount %>"
+     data-discount-range-slider-total-price="<%= @total_price %>"
      class="flex flex-col gap-y-3">
   <div class="flex flex-row justify-between items-center">
     <label for="slider" class="text-lg text-gray-500">Передвигая слайдер, укажите сумму скидки</label>
-    <span data-range-slider-target="display" class="text-xl font-medium text-teal-400"></span>
+    <span data-discount-range-slider-target="display" class="text-xl font-medium text-teal-400"></span>
   </div>
 
   <style>
@@ -99,6 +99,6 @@
          max="<%= @max_discount %>"
          value="0"
          class="w-full h-12 appearance-none bg-transparent focus:outline-none cursor-pointer"
-         data-range-slider-target="slider"
-         data-action="input->range-slider#handleSlider">
+         data-discount-range-slider-target="slider"
+         data-action="input->discount-range-slider#handleSlider">
 </div>

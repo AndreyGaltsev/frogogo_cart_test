@@ -9,5 +9,4 @@ class Products::ImageComponent < ApplicationComponent
     @image = product.images.first
     @image_options = image_options
   end
-
 end

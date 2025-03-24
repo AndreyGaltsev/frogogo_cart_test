@@ -1,16 +1,15 @@
 <%= form_with url: @path,
               method: :patch,
               data: {
-                controller: "cart",
-                action: "input->cart#submit"
+                controller: @stimulus_controller,
+                action: @stimulus_actions[:input]
               } do |f| %>
 
   <%= f.hidden_field :id, value: @product_id %>
 
   <div class="flex justify-center items-center gap-x-1 p-1 bg-gray-50 rounded-lg">
     <%= button_tag type: "button",
-                   class: "decrement-button",
-                   data: { action: "click->cart#decrement" } do %>
+                   data: { action: @stimulus_actions[:decrement] } do %>
       <svg xmlns="http://www.w3.org/2000/svg"
            class="w-6 h-6 cursor-pointer"
            viewBox="0 0 24 24"
@@ -23,14 +22,13 @@
     <% end %>
 
     <%= f.text_field :quantity,
-                       value: @picked_product_quantity,
-                       min: 1,
-                       class: "h-8 w-9 text-xl font-semibold text-center border-0 cursor-pointer",
-                       data: { cart_target: "quantity" } %>
+                     value: @picked_product_quantity,
+                     min: 1,
+                     class: "h-8 w-9 text-xl font-semibold text-center border-0 cursor-pointer",
+                     data: { (:"#{@stimulus_controller}_target") => @stimulus_targets[:quantity] } %>
 
     <%= button_tag type: "button",
-                   class: "increment-button",
-                   data: { action: "click->cart#increment" } do %>
+                   data: { action: @stimulus_actions[:increment] } do %>
       <svg xmlns="http://www.w3.org/2000/svg"
            class="w-6 h-6 cursor-pointer"
            viewBox="0 0 24 24"

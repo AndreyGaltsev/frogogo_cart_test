@@ -6,5 +6,4 @@ class Navigation::LogoComponent < ApplicationComponent
         <%= image_tag asset_path('logo-frogogo.png'), alt: 'Frogogo', style: "width: auto; height: 44px;" %>
       <% end %>
   ERB
-
 end

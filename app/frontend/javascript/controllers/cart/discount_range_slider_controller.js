@@ -5,8 +5,8 @@ export default class extends Controller {
 
     connect() {
         // Получаем максимальную скидку и общую сумму из атрибутов данных
-        this.maxDiscount = parseFloat(this.element.dataset.rangeSliderMaxDiscount) || 0
-        this.totalPrice = parseFloat(this.element.dataset.rangeSliderTotalPrice) || 0
+        this.maxDiscount = parseFloat(this.element.dataset.discountRangeSliderMaxDiscount) || 0
+        this.totalPrice = parseFloat(this.element.dataset.discountRangeSliderTotalPrice) || 0
 
         // Если максимальная скидка равна 0, отключаем слайдер
         if (this.maxDiscount <= 0) {

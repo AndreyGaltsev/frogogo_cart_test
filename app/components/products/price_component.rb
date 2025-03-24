@@ -10,5 +10,4 @@ class Products::PriceComponent < ApplicationComponent
   def initialize(product:)
     @price = product.price
   end
-
 end

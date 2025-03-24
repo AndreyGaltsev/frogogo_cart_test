@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import CartController from "./cart_controller"
-application.register("cart", CartController)
+import UpdateQuantityrController from "./cart/update_quantity_controller"
+application.register("update-quantity", UpdateQuantityrController)
 
-import RangeSliderController from "./range_slider_controller"
-application.register("range-slider", RangeSliderController)
+import DiscountRangeSliderController from "./cart/discount_range_slider_controller"
+application.register("discount-range-slider", DiscountRangeSliderController)

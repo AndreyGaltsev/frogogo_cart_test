@@ -8,9 +8,9 @@ class CartsController < ApplicationController
     @current_cart.clear_cart
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.replace('cart',
-                                                  template: 'carts/show',
-                                                  locals: {cart: @current_cart})
+        render turbo_stream: turbo_stream.replace("cart",
+                                                  template: "carts/show",
+                                                  locals: { cart: @current_cart })
       end
     end
   end
@@ -20,7 +20,7 @@ class CartsController < ApplicationController
     picked_product.update(quantity: cart_params[:quantity])
     respond_to do |format|
       format.turbo_stream do
-        render turbo_stream: turbo_stream.update('cart_offer', Pages::Cart::OfferComponent.new(cart: @current_cart).render_in(view_context))
+        render turbo_stream: turbo_stream.update("cart_offer", Pages::Cart::OfferComponent.new(cart: @current_cart).render_in(view_context))
       end
     end
   end
@@ -34,12 +34,12 @@ class CartsController < ApplicationController
         if @picked_products.reload.any?
           render turbo_stream: [
             turbo_stream.remove(turbo_frame_id),
-            turbo_stream.update('cart_offer', Pages::Cart::OfferComponent.new(cart: @current_cart).render_in(view_context))
+            turbo_stream.update("cart_offer", Pages::Cart::OfferComponent.new(cart: @current_cart).render_in(view_context))
           ]
         else
-          render turbo_stream: turbo_stream.replace('cart',
-                                                    template: 'carts/show',
-                                                    locals: {cart: @current_cart})
+          render turbo_stream: turbo_stream.replace("cart",
+                                                    template: "carts/show",
+                                                    locals: { cart: @current_cart })
         end
       end
     end
